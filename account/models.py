@@ -35,6 +35,7 @@ class Account(AbstractBaseUser):
     email = models.EmailField(unique=True)
     tagline = models.CharField(max_length=250, blank=True)
     description = models.TextField(blank=True)
+    photo = models.ImageField(default='/static/images/anon.png')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
