@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
 
+{% load bootstrap %}
+
 {% block content %}
-    <section class="form-container">
-        <form action="{% url 'account:sign_up' %}" method="POST" enctype="multipart/form-data">
+    <section class="container form-container">
+        <form action="{% url 'account:sign_up' %}" enctype="multipart/form-data" method="POST" role="form">
         {% csrf_token %}
-            {{ form }}
-            <input type="submit" value="Sign Up">
+            {{ form|bootstrap }}
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Sign Up">
+            </div>
         </form>
     </section>
 {% endblock content %}

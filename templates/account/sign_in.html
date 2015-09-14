@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
 
+{% load bootstrap %}
+
 {% block content %}
-    <section class="form-container">
-        <form action="{% url 'account:sign_in' %}" method="POST" enctype="multipart/form-data">
+    <section class="container form-container">
+        <form action="{% url 'account:sign_in' %}" method="POST" role="form">
         {% csrf_token %}
-            {{ form }}
-            <input type="submit" value="Sign In">
+            {{ form|bootstrap }}
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Sign In">
+                <a href="{% url 'account:password_reset' %}" class="forgot-link">Forgot password?</a>
+            </div>
         </form>
     </section>
 {% endblock content %}
