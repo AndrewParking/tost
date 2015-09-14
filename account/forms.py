@@ -17,7 +17,6 @@ class CreateAccountForm(UserCreationForm):
             username=username,
             password=password
         )
-        print('------>', user)
         login(self.request, user)
 
     class Meta:
