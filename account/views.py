@@ -1,8 +1,9 @@
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.views.generic import DetailView
+from django.views.generic.base import RedirectView
 from django.views.generic.edit import FormView
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import CreateAccountForm, UpdateAccountForm
 from .models import Account
@@ -91,3 +92,11 @@ class UpdateAccountView(RedirectAnonUserMixin, FormView):
     def form_valid(self, form):
         form.save()
         return super(UpdateAccountView, self).form_valid(form)
+
+
+class LogOutView(RedirectView):
+    permanent = False
+
+    def get_redirect_url(self, *args, **kwargs):
+        logout(self.request)
+        return reverse_lazy('account:sign_in')

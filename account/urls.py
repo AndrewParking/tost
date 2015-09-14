@@ -7,4 +7,5 @@ urlpatterns = [
     url(r'^update_account/$', views.UpdateAccountView.as_view(), name='update_account'),
     url(r'^sign-up/$', views.SignUpView.as_view(), name='sign_up'),
     url(r'^sign-in/$', views.SignInView.as_view(), name='sign_in'),
+    url(r'^logout/$', views.LogOutView.as_view(), name='logout'),
 ]

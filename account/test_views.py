@@ -183,3 +183,18 @@ class UpdateAccountViewTest(CreateValidUserMixin, TestCase):
         })
         account = Account.objects.last()
         self.assertEqual(account.username, 'Andrew')
+
+
+class LogOutViewTest(CreateValidUserMixin, TestCase):
+
+    def test_redirects_on_success(self):
+        self.create_user()
+        self.client.login(username='Andrew', password='homm1994')
+        response = self.client.get(reverse('account:logout'))
+        self.assertRedirects(response, reverse('account:sign_in'))
+
+    def test_logs_user_out(self):
+        self.create_user()
+        self.client.login(username='Andrew', password='homm1994')
+        self.client.get(reverse('account:logout'))
+        self.assertNotIn('_auth_user_id', self.client.session)
