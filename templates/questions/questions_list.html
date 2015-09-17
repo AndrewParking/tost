@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="container">
+        <div class="col-md-12 search-form">
+            <form method="GET">
+                <div class="input-group">
+                    <input type="text" name="q" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                        <input type="submit" class="btn btn-primary" value="Go!">
+                    </span>
+                </div>
+            </form>
+        </div>
+        {% if search_results %}
+            <div class="col-md-12 search-results">{{ search_results }}</div>
+        {% endif %}
+        <div class="questions-nav">
+            <ul class="nav nav-pills">
+                <li role="presentation" class="cat-tab {% if type == 'latest' %} active {% endif %}">
+                    <a href="{% url 'questions:questions_latest' %}">Latest</a>
+                </li>
+                <li role="presentation" class="cat-tab {% if type == 'best' %} active {% endif %}">
+                    <a href="{% url 'questions:questions_best' %}">Best</a>
+                </li>
+                <li role="presentation" class="cat-tab {% if type == 'unanswered' %} active {% endif %}">
+                    <a href="{% url 'questions:questions_unanswered' %}">Unanswered</a>
+                </li>
+            </ul>
+        </div>
+        <h3 class="questions-title">{{ title }}</h3>
+        <div>
+        {% for question in questions %}
+            <div class="col-md-4 question-wrapper">
+                <div class="question">
+                    <h5><a href="#">{{ question.summary }}</a></h5>
+                    <p class="question-date">{{ question.created_at }}</p>
+                    <p>
+                        <span class="question-answers-count">{{ question.answers_count }} answers</span>
+                        <span class="question-comments-count">{{ question.comments_count }} comments</span>
+                        <span class="question-likes-count">{{ question.likes_count }} likes</span>
+                    </p>
+                </div>
+            </div>
+        {% empty %}
+            <p>No questions to show, sorry :(</p>
+        {% endfor %}
+        </div>
+    </section>
+{% endblock content %}

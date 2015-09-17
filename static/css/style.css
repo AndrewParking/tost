@@ -1,3 +1,6 @@
+body {
+  background: #f5f5f5;
+}
 header {
   background: #fff;
   height: 50px;
@@ -40,4 +43,45 @@ header ul li a:hover {
 }
 .forgot-link {
   margin-left: 20px;
+}
+.questions-nav,
+.questions-title {
+  padding: 0 10px;
+}
+.search-form {
+  margin-bottom: 40px;
+}
+.search-results {
+  background: #ddd;
+  padding: 10px 25px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 4px #aaa;
+}
+.question-wrapper {
+  padding: 15px;
+}
+.question-wrapper .question {
+  background: #fff;
+  padding: 10px 25px;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px #aaa;
+  transition: box-shadow 0.4s ease-in-out;
+}
+.question-wrapper .question:hover {
+  box-shadow: 0 4px 12px #aaa;
+}
+.active {
+  box-shadow: 0 1px 4px #aaa;
+}
+.questions-nav .nav-pills .cat-tab {
+  box-shadow: 0 1px 4px #aaa;
+  margin-right: 15px;
+  transition: box-shadow 0.4s ease-in-out;
+  border-radius: 4px;
+  background-color: #fff !important;
+}
+.questions-nav .nav-pills .cat-tab:hover {
+  background-color: #fff !important;
+  box-shadow: 0 4px 12px #aaa;
 }
