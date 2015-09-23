@@ -22,6 +22,6 @@ Question detail page and profile page contain certain amount of client-side logi
 
 In order to make form look a little bit pretty I've used ***Django Bootstrap Form*** package and also to provide the admin interface with some modern flat apperance ***Django Flat Theme*** package was used.
 
-![Sign in form screenshot](./screenshots/screen3-tost.png)
+![Sign in form screenshot](./screenshots/screen4-tost.png)
 
 ***MySQL*** was chosen as a database for this project.
