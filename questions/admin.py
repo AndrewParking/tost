@@ -1,8 +1,13 @@
 from django.contrib import admin
 from django.contrib.contenttypes.admin import GenericTabularInline
-from .models import Question, Answer, Comment, Like
+from .models import Question, Answer, Comment, Like, Tag
 
 # Register your models here.
+
+class TagAdmin(admin.ModelAdmin):
+    fields = ['name']
+    list_display = ('name',)
+    filter_by = ['name']
 
 
 class CommentInline(GenericTabularInline):
@@ -20,7 +25,7 @@ class LikeInline(GenericTabularInline):
 
 
 class QuestionAdmin(admin.ModelAdmin):
-    fields = ['summary', 'content', 'author']
+    fields = ['summary', 'content', 'author', 'tags']
     list_display = ('summary', 'author', 'created_at')
     filter_by = ['created_at']
     inlines = [CommentInline, LikeInline]
@@ -33,5 +38,6 @@ class AnswerAdmin(admin.ModelAdmin):
     inlines = [CommentInline, LikeInline]
 
 
+admin.site.register(Tag, TagAdmin)
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(Answer, AnswerAdmin)

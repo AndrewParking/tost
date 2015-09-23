@@ -1,5 +1,62 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div>Hello, {{ account.username }}</div>
+    <section class="profile">
+    	<img src="{{ account.photo.url }}">
+    	<p class="username">{{ account.username }}</p>
+    	<p class="tagline">{{ account.tagline }}</p>
+        <p class="verification">
+            {% if account.verified %}
+                <span class="label label-success">verified</span>
+            {% else %}
+                <span class="label label-default tip">unverified</span>
+            {% endif %}
+        </p>
+    	<p class="description">{{ account.description }}</p>
+    	<div class="stats">
+    		<div class="stat-block">
+    			<p class="stat stat-questions">{{ account.questions_count }}</p>
+    			<p class="stat-description">questions</p>
+    		</div>
+    		<div class="stat-block">
+    			<p class="stat stat-answers">{{ account.answers_count }}</p>
+    			<p class="stat-description">answers</p>
+    		</div>
+    		<div class="stat-block">
+    			<p class="stat stat-solutions">{{ account.solution_percent }}%</p>
+    			<p class="stat-description">solutions</p>
+    		</div>
+    	</div>
+    	<div id="profile-container"></div>
+<!--
+    	<div class="question-wrapper question-profile-wrapper">
+    	{% for question in account.own_questions.all %}
+            <div class="question">
+                <h5>
+                	<a href="{% url 'questions:questions_detail' question.id %}">
+                		{{ question.summary }}
+                	</a>
+                </h5>
+                <p class="question-date">{{ question.created_at }}</p>
+                <p>
+                    <span class="label label-primary question-answers-count">
+                        {{ question.answers_count }} answers
+                    </span>
+                    <span class="label label-success question-comments-count">
+                        {{ question.comments_count }} comments
+                    </span>
+                    <span class="label label-warning question-likes-count">
+                        {{ question.likes_count }} likes
+                    </span>
+                </p>
+            </div>
+    	{% endfor %}		
+    	</div>
+-->
+    </section>
 {% endblock content %}
+
+{% block scripts %}
+	{% load staticfiles %}
+	<script src={% static 'ready/js/final.js' %}></script>
+{% endblock scripts %}

@@ -23,10 +23,18 @@ class TimeStampMixin(models.Model):
 # ================================================
 
 
+class Tag(models.Model):
+    name = models.CharField(max_length=150)
+
+    def __str__(self):
+        return self.name
+
+
 class Question(TimeStampMixin):
-    summary = models.CharField(blank=False, max_length=250)
-    content = models.TextField(blank=False)
+    summary = models.CharField(max_length=250)
+    content = models.TextField()
     author = models.ForeignKey(Account, related_name='own_questions', blank=True, null=True)
+    tags = models.ManyToManyField(Tag, related_name='questions')
     comments = GenericRelation('Comment')
     likes = GenericRelation('Like')
 
@@ -47,11 +55,12 @@ class Question(TimeStampMixin):
 
 
 class Answer(TimeStampMixin):
-    content = models.TextField()
+    content = models.CharField(max_length=1000)
     question = models.ForeignKey(Question, related_name='answers')
     author = models.ForeignKey(Account, related_name='own_answers', blank=True, null=True)
     comments = GenericRelation('Comment')
     likes = GenericRelation('Like')
+    solution = models.BooleanField(default=False)
 
     @property
     def comments_count(self):
@@ -66,7 +75,7 @@ class Answer(TimeStampMixin):
 
 
 class Comment(TimeStampMixin):
-    content = models.TextField(max_length=400)
+    content = models.CharField(max_length=400)
     author = models.ForeignKey(Account, related_name='comments')
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
@@ -77,7 +86,7 @@ class Comment(TimeStampMixin):
 
 
 class Like(TimeStampMixin):
-    author = models.ForeignKey(Account)
+    author = models.ForeignKey(Account, related_name='likes')
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')

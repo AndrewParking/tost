@@ -1,0 +1,442 @@
+body
+    background #f5f5f5
+    font-size 15px
+    padding-bottom 30px
+    padding-top 0
+
+header
+    background #fff
+    height 50px
+    box-shadow 0px 0px 2px 2px #ddd
+    margin-bottom 25px
+
+    .logo
+        line-height 50px
+        font-size 17px
+        font-weight bold
+        color #424242
+
+        &:hover
+            text-decoration none
+
+    ul li
+        float right
+        display block
+        height 50px
+        line-height 50px
+
+        a
+            display block
+            width 100%
+            height 100%
+            padding-left 20px
+            padding-right 20px
+            transition all .3s ease-in-out
+            border-bottom 0 solid #4285f4
+            color #888
+
+            &:hover
+                text-decoration none
+                border-bottom 5px solid #4285f4
+
+.form-container
+    width 500px
+    margin 0 auto
+    margin-top 30px
+    padding-bottom 50px
+
+.forgot-link
+    margin-left 20px
+
+.questions-nav,
+.questions-title
+    padding 0 10px
+
+.search-form
+    margin-bottom 40px
+
+.search-results
+    background #ddd
+    padding 10px 25px
+    border-radius 4px
+    margin-bottom 10px
+    box-shadow 0 1px 4px #aaa
+
+.question-wrapper
+    padding 15px
+    float none
+    width 375px
+    display inline-block
+    vertical-align top
+
+    .question
+        background #fff
+        padding 2px 20px
+        box-shadow 0 1px 7px #aaa
+        margin-bottom 15px
+        transition box-shadow .4s ease-in-out
+        
+        h5
+            a
+                color #777
+                
+                &:hover
+                    text-decoration none
+                    color #2196f3
+    
+        .question-date
+            color #aaa
+            font-size 12px
+        
+        .label
+            margin-right 5px
+            box-shadow 0 1px 7px #aaa
+
+        &:hover
+          box-shadow 0 4px 12px #aaa
+
+.active
+    box-shadow 0 1px 4px #aaa
+
+.questions-nav 
+    
+    a 
+        span
+            box-shadow 0 1px 5px #ccc
+            font-size 12px
+            margin-right 5px
+            
+            &:hover
+                background #ff9800
+            
+        .active
+            background #2196f3
+        
+        &:hover
+            text-decoration none
+        
+.like-button
+    margin-bottom 20px
+        
+.comments-container
+    margin-top 20px
+    margin-bottom 20px
+        
+    .comment
+        margin-left 40px
+        margin-bottom 10px
+        width 400px
+        padding 10px 15px
+        box-shadow none
+        transition box-shadow .4s ease-in-out
+        
+        &:hover
+            box-shadow 0 2px 3px #ccc
+        
+        .comment-heading
+            margin-bottom 10px
+            
+            img
+                height 45px
+                width 45px
+                margin-right 15px
+                border-radius 50%
+                
+            a
+                line-height 45px
+                
+            .comment-delete
+                display none
+                float right
+                font-size 12px
+                line-height 45px
+                text-transform uppercase
+                cursor pointer
+                    
+                &:hover
+                    color #D20E0E
+                
+        .comment-content
+            margin-top 10px
+            padding-left 15px
+            border-left 4px solid #aaa
+            
+        &:hover .comment-delete
+            display block
+            
+.comment-form
+    margin-left 40px
+    
+    textarea
+        width 400px
+        margin-right 10px
+        margin-bottom 20px
+        padding 10px 20px
+        box-shadow 0 1px 3px #aaa
+        transition box-shadow .4s ease-in-out
+        
+        &:focus
+            outline none
+            border 0 solid red
+            box-shadow 0 4px 10px #aaa
+    
+    button 
+        vertical-align top
+        
+.comments-toggle
+    font-weight bold
+    font-size 15px
+    cursor pointer
+    display inline-block
+    
+    &:hover
+        color #999
+        
+.like-button
+    
+    &:focus
+        outline none
+        
+    .counter
+        margin-left 10px
+        
+.answers
+    margin-top 30px
+    padding-top 30px
+    border-top 2px solid #ccc
+    width 650px
+    
+    .answer-form
+        margin-bottom 20px
+        
+        textarea
+            width 650px
+            height 120px
+            margin-right 10px
+            padding 10px 20px
+            box-shadow 0 1px 3px #aaa
+            transition box-shadow .4s ease-in-out
+            
+            &:focus
+                outline none
+                border 0 solid red
+                box-shadow 0 4px 10px #aaa
+        
+        button
+            display inline-block 
+            
+    .answer-header
+        margin-bottom 10px
+            
+        img
+            height 45px
+            width 45px
+            margin-right 15px
+            border-radius 50%
+            
+        a
+            line-height 60px
+            
+        .label 
+            line-height 60px
+            margin-left 10px
+            
+    .answer-content
+        margin-top 10px
+        margin-bottom 20px
+        padding-left 15px
+        border-left 4px solid #aaa
+        
+.full-question
+    
+    .full-question-heading
+        font-size 18px
+
+        img 
+            height 60px
+            width 60px
+            border-radius 50%
+            
+        a
+            line-height 60px
+            margin-right 10px
+            margin-left 15px
+            
+        span
+            color #aaa
+            
+    .full-question-tags
+        margin-bottom 20px
+        
+        .tag 
+            margin 0
+            padding 0 7px
+            height 22px
+            line-height 24px
+            font-size 10px
+            font-weight bold
+            margin-right 5px
+            color #777
+            background #ddd
+            
+            &:hover
+                background #2196f3
+                color #fff
+                
+
+.form-heading
+    margin-bottom 30px
+    
+.full-question
+    background #fff
+    padding 20px 30px
+    box-shadow 0 1px 7px #aaa
+    
+.similar-question
+    background #fff
+    padding 2px 20px
+    box-shadow 0 1px 7px #aaa
+    margin-bottom 15px
+    
+    .question-date
+        color #aaa
+        font-size 12px
+    
+    .label
+        margin-right 5px
+        box-shadow 0 1px 7px #aaa
+        
+.mark 
+    margin-bottom 20px
+    margin-left 10px
+    
+    &:focus
+        outline none
+        
+.profile
+    width 960px
+    margin 0 auto
+    margin-top 30px
+    background #fff
+    box-shadow 0 2px 4px #aaa
+    padding 40px 50px
+    
+    img 
+        display block
+        width 150px
+        height 150px
+        margin 0 auto
+        margin-bottom 10px
+        border-radius 50%
+        box-shadow 0 1px 7px #aaa
+        
+    p 
+        text-align center
+        
+    .username
+        font-size 30px
+        margin-bottom 0
+    
+    .tagline
+        font-size 16px
+        margin 0
+        color #aaa
+        margin-bottom 10px
+        
+    .stats
+        display block
+        text-align center
+        margin-bottom 35px
+        
+        &:after
+            content ''
+            display block
+            clear both
+
+        .stat-block
+            display inline-block
+            padding-right 25px
+            padding-left 25px
+            border-left 1px solid #ccc
+            
+            &:first-child
+                border-left none
+                
+            p 
+                margin-bottom 0
+                
+            .stat
+                font-size 30px
+                font-weight bold  
+            
+            .stat-questions
+                color #2196f3
+                
+            .stat-solutions
+                color #4caf50
+                
+            .stat-description
+                color #aaa
+                
+.question-profile-wrapper
+    width 900px
+    
+    .question
+        display inline-block
+        width 408px
+        
+        &:nth-child(2n+1)
+            margin-right 20px
+        
+        h5
+            text-align center
+            
+.profile-tabs
+    text-align center
+    margin-bottom 10px
+    
+    span
+        cursor pointer
+        font-size 14px
+        box-shadow 0 1px 7px #bbb
+        
+        &:first-child
+            margin-right 17px
+            
+.not-found-wrapper
+    width 500px
+    padding 15px 20px
+    margin 0 auto
+    margin-top 50px
+    background #fff
+    box-shadow 0 2px 8px #aaa
+    
+.verification
+    
+    span
+        cursor pointer
+        font-size 14px
+        box-shadow 0 1px 7px #bbb
+
+    .tip
+        position relative
+        
+        &:after
+            display block
+            left -140px
+            top -65px
+            position absolute
+            width 360px
+            height 0
+            padding 0
+            border-radius 2px
+            background #bbb
+            box-shadow 0 1px 7px #bbb
+        
+        &:hover
+            
+            &:after
+                height auto
+                content 'Check the email-box and follow link to get verified.'
+                padding 20px 20px
+                

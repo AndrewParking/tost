@@ -4,11 +4,12 @@
 
 {% block content %}
     <section class="container form-container">
-        <form action="{% url 'account:sign_up' %}" enctype="multipart/form-data" method="POST" role="form">
+        <form action="{% url 'questions:add_question' %}" method="POST" role="form">
         {% csrf_token %}
+        	<h3 class="form-heading">Ask question</h3>
             {{ form|bootstrap }}
             <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Sign Up">
+                <input type="submit" class="btn btn-primary" value="Ask question">
             </div>
         </form>
     </section>

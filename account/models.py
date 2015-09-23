@@ -36,6 +36,7 @@ class Account(AbstractBaseUser):
     tagline = models.CharField(max_length=250, blank=True)
     description = models.TextField(blank=True)
     photo = models.ImageField(default='/static/images/anon.png')
+    verified = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -72,3 +73,23 @@ class Account(AbstractBaseUser):
         if not kwargs.get('email') and not self.email:
             raise ValidationError('We need your email')
         super(Account, self).save(*args, **kwargs)
+
+    @property
+    def questions_count(self):
+        return self.own_questions.count()
+
+    @property
+    def answers_count(self):
+        return self.own_answers.count()
+
+    @property
+    def solution_percent(self):
+        solutions = self.own_answers.filter(solution=True).count()
+        if self.answers_count == 0:
+            return 0
+        return int(solutions/self.answers_count*100)
+
+
+class ConfirmationLink(models.Model):
+    account = models.OneToOneField(Account, related_name='link')
+    value = models.CharField(max_length=50)

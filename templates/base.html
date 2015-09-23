@@ -5,18 +5,19 @@
         <title>Tost Questions</title>
         <link rel="stylesheet" href="https://bootswatch.com/paper/bootstrap.min.css">
         {% load staticfiles %}
-        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'ready/css/style.css' %}">
     </head>
     <body>
         <header>
             <div class="container">
-                <a href="#" class="col-md-4 logo">Tost</a>
-                <div class="col-md-4"></div>
+                <a href="{% url 'questions:questions_latest' %}" class="col-md-1 logo">Tost</a>
+                <div class="col-md-7"></div>
                 <ul class="col-md-16">
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'account:logout' %}">Logout</a></li>
                     <li><a href="{% url 'account:profile' user.id %}">Profile</a></li>
                     <li><a href="{% url 'account:update_account' %}">Update account</a></li>
+                    <li><a href="{% url 'questions:add_question' %}">Ask question</a></li>
                 {% else %}
                     <li><a href="{% url 'account:sign_in' %}">Sign In</a></li>
                     <li><a href="{% url 'account:sign_up' %}">Sign Up</a></li>
@@ -27,5 +28,6 @@
         <main>
             {% block content %}{% endblock content %}
         </main>
+        {% block scripts %}{% endblock scripts %}
     </body>
 </html>

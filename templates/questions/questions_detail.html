@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="container">
+    <section class="full-question col-md-8">
+        <div class="full-question-heading">
+        	<img src="{{ question.author.photo.url }}">
+        	<a href="{% url 'account:profile' question.author.id %}">{{ question.author.username }}</a>
+        	<span>@{{ question.author.email }}</span>
+        </div>
+        <h3>{{ question.summary }}</h3>
+        <div class="full-question-tags">
+        {% for tag in question.tags.all %}
+        	<a href="{% url 'questions:questions_by_tag_id' tag.id %}" class="btn tag">
+                #{{ tag.name }}
+            </a>
+        {% endfor %}	
+        </div>
+        <p>{{ question.content }}</p>
+        <section id="question-app-container"></section>
+    </section>
+    <section class="similar col-md-4">
+    {% for question in similar %}
+        <div class="similar-question">
+            <h5><a href="{% url 'questions:questions_detail' question.id %}">{{ question.summary }}</a></h5>
+            <p class="question-date">{{ question.created_at }}</p>
+            <p>
+                <span class="label label-primary question-answers-count">
+                    {{ question.answers_count }} answers
+                </span>
+                <span class="label label-success question-comments-count">
+                    {{ question.comments_count }} comments
+                </span>
+                <span class="label label-warning question-likes-count">
+                    {{ question.likes_count }} likes
+                </span>
+            </p>
+        </div>
+    {% endfor %}    
+    </section>
+</section>
+{% endblock content %}
+
+{% block scripts %}
+	{% load staticfiles %}
+	<script src={% static 'ready/js/final.js' %}></script>
+{% endblock scripts %}

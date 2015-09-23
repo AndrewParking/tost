@@ -1,10 +1,16 @@
 from django.conf.urls import url
 from django.contrib.auth import views as auth_views
+from rest_framework import routers
 from . import views
+
+
+router = routers.SimpleRouter()
+router.register(r'accounts', views.AccountViewSet)
 
 
 urlpatterns = [
     url(r'^(?P<pk>[0-9]+)/$', views.ProfileView.as_view(), name='profile'),
+    url(r'^verification/$', views.VerificationView.as_view(), name='verification'),
     url(r'^update_account/$', views.UpdateAccountView.as_view(), name='update_account'),
     url(r'^sign-up/$', views.SignUpView.as_view(), name='sign_up'),
     url(r'^sign-in/$', views.SignInView.as_view(), name='sign_in'),
@@ -34,3 +40,5 @@ urlpatterns = [
         'template_name': 'account/password_reset_complete.html',
     }, name='password_reset_complete'),
 ]
+
+urlpatterns += router.urls

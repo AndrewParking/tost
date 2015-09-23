@@ -16,35 +16,52 @@
             <div class="col-md-12 search-results">{{ search_results }}</div>
         {% endif %}
         <div class="questions-nav">
-            <ul class="nav nav-pills">
-                <li role="presentation" class="cat-tab {% if type == 'latest' %} active {% endif %}">
-                    <a href="{% url 'questions:questions_latest' %}">Latest</a>
-                </li>
-                <li role="presentation" class="cat-tab {% if type == 'best' %} active {% endif %}">
-                    <a href="{% url 'questions:questions_best' %}">Best</a>
-                </li>
-                <li role="presentation" class="cat-tab {% if type == 'unanswered' %} active {% endif %}">
-                    <a href="{% url 'questions:questions_unanswered' %}">Unanswered</a>
-                </li>
-            </ul>
+            <a href="{% url 'questions:questions_latest' %}">
+                <span class="label label-default {% if type == 'latest'%} active {% endif %}">
+                    Latest
+                </span>
+            </a>
+            <a href="{% url 'questions:questions_best' %}">
+                <span class="label label-default {% if type == 'best'%} active {% endif %}">
+                    Best
+                </span>
+            </a>
+            <a href="{% url 'questions:questions_unanswered' %}">
+                <span class="label label-default {% if type == 'unanswered'%} active {% endif %}">
+                    Unanswered
+                </span>
+            </a>
         </div>
         <h3 class="questions-title">{{ title }}</h3>
         <div>
         {% for question in questions %}
-            <div class="col-md-4 question-wrapper">
+            <div class="question-wrapper">
                 <div class="question">
-                    <h5><a href="#">{{ question.summary }}</a></h5>
+                    <h5><a href="{% url 'questions:questions_detail' question.id %}">{{ question.summary }}</a></h5>
                     <p class="question-date">{{ question.created_at }}</p>
                     <p>
-                        <span class="question-answers-count">{{ question.answers_count }} answers</span>
-                        <span class="question-comments-count">{{ question.comments_count }} comments</span>
-                        <span class="question-likes-count">{{ question.likes_count }} likes</span>
+                        <span class="label label-primary question-answers-count">
+                            {{ question.answers_count }} answers
+                        </span>
+                        <span class="label label-success question-comments-count">
+                            {{ question.comments_count }} comments
+                        </span>
+                        <span class="label label-warning question-likes-count">
+                            {{ question.likes_count }} likes
+                        </span>
                     </p>
                 </div>
             </div>
         {% empty %}
             <p>No questions to show, sorry :(</p>
         {% endfor %}
+        </div>
+        <div class="col-md-12 pagination">
+        {% for page in questions.paginator.page_range %}
+            <a href="?page={{ page }}" class="btn {% if page == questions.number %} btn-primary current {% endif %}">
+                {{ page }}
+            </a>
+        {% endfor %}    
         </div>
     </section>
 {% endblock content %}

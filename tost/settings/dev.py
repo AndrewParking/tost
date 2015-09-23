@@ -24,4 +24,9 @@ DEFAULT_TO_EMAIL = 'to email'
 
 
 if 'test' in sys.argv:
-	DATABASES['default'] = {'ENGINE': 'django.db.backends.sqlite3'}
+	DATABASES['default'] = {
+		'ENGINE': 'django.db.backends.sqlite3',
+		'NAME': 'test',
+		'USER': 'test',
+		'PASSWORD': 'test',
+	}

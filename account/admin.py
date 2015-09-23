@@ -14,7 +14,7 @@ class AccountAdmin(admin.ModelAdmin):
             'classes': ['collapse']
         }),
     ]
-    list_display = ('username', 'email', 'created_at')
+    list_display = ('username', 'email', 'verified', 'created_at')
     filter_by = ['created_at']
 
 
